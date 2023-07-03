@@ -1,12 +1,6 @@
 <template>
   <v-footer>
-    <v-card
-      class="text-center"
-      elevation="0"
-      rounded="0"
-      width="100%"
-      color="FAFAFA"
-    >
+    <v-card class="text-center" elevation="0" rounded="0" width="100%" color="FAFAFA">
       <v-card-text>
         <v-btn class="mx-4" variant="text">Catalog</v-btn>
         <v-btn class="mx-4" variant="text">Designers</v-btn>
@@ -16,7 +10,7 @@
         <v-btn class="mx-4" variant="text">Contact</v-btn>
       </v-card-text>
       <v-card-text>
-        @ {{ new Date().getFullYear() }} <strong> Design by Minhvu</strong>
+        @ {{ new Date().getFullYear() }} <strong> Design by SonDQ</strong>
       </v-card-text>
     </v-card>
   </v-footer>
