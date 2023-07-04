@@ -1,67 +1,27 @@
 <template>
   <v-app>
     <NavBar />
-    <PopupView
-      :laptops="dataPopup"
-      v-if="isShowPopup"
-      @Close="isShowPopup = false"
-    />
+    <PopupView :laptops="dataPopup" v-if="isShowPopup" @Close="isShowPopup = false" />
     <v-container fluid>
-      <v-card
-        color="#F7F7F7"
-        height="180px"
-        tile
-        flat
-        class="d-flex align-center justify-center mt-12"
-        dark
-      >
+      <v-card color="#F7F7F7" height="180px" tile flat class="d-flex align-center justify-center mt-12" dark>
         <v-col cols="12" sm="12">
           <v-item-group mandatory class="mt-n1">
             <v-container>
               <v-row justify="center" class="space">
-                <v-col
-                  cols="12"
-                  xs="12"
-                  md="2"
-                  ms="2"
-                  v-for="(category, i) in categories"
-                  :key="i"
-                >
+                <v-col cols="12" xs="12" md="2" ms="2" v-for="(category, i) in categories" :key="i">
                   <v-item v-slot="{ active }">
-                    <v-card
-                      :color="active ? '#D5F0DB' : 'white'"
-                      :class="active ? 'borderme' : 'borderout'"
-                      class="d-flex-algin-center rounded-lg mx-2 pa-5"
-                      dark
-                      height="170"
-                      @click="() => handleCardClick(category.title)"
-                      flat
-                    >
+                    <v-card :color="active ? '#D5F0DB' : 'white'" :class="active ? 'borderme' : 'borderout'"
+                      class="d-flex-algin-center rounded-lg mx-2 pa-5" dark height="170"
+                      @click="() => handleCardClick(category.title)" flat>
                       <v-row>
                         <v-col cols="12" sm="12">
-                          <v-list-item
-                            three-line
-                            class="text-center align-center justify-center pa-0"
-                          >
+                          <v-list-item three-line class="text-center align-center justify-center pa-0">
                             <v-list-item-content>
-                              <div
-                                align="center"
-                                justify="center"
-                                class="mt-5"
-                                style="height: 70px"
-                              >
-                                <v-img
-                                  :src="category.img"
-                                  max-height="80"
-                                  max-width="80"
-                                  contain
-                                >
+                              <div align="center" justify="center" class="mt-5" style="height: 70px">
+                                <v-img :src="category.img" max-height="80" max-width="80" contain>
                                 </v-img>
                               </div>
-                              <v-list-item-subtitle
-                                :class="active ? 'green--text' : 'black--text'"
-                                class="caption mt-5"
-                              >
+                              <v-list-item-subtitle :class="active ? 'green--text' : 'black--text'" class="caption mt-5">
                                 {{ category.title }}
                               </v-list-item-subtitle>
                             </v-list-item-content>
@@ -87,15 +47,8 @@
         <v-btn varient="text" color="grey">Price</v-btn>
       </v-toolbar>
       <v-row class="ma-5">
-        <v-col
-          @click="handleDataPopup(laptop)"
-          cols="12"
-          sm="3"
-          align="center"
-          justify="center"
-          v-for="(laptop, i) in laptops"
-          :key="i"
-        >
+        <v-col @click="handleDataPopup(laptop)" cols="12" sm="3" align="center" justify="center"
+          v-for="(laptop, i) in laptops" :key="i">
           <v-card align="center" tile>
             <v-img :src="laptop.ImageLink" width="200" height="200" contain>
             </v-img>
@@ -103,10 +56,7 @@
               <strong>{{ laptop.Name }}</strong>
             </v-card-text>
             <v-card-text class="">
-              <button
-                class="pa-2 rounded"
-                style="background-color: #cb1c22; color: white"
-              >
+              <button class="pa-2 rounded" style="background-color: #cb1c22; color: white">
                 <strong>{{ laptop.Price }}</strong>
               </button>
             </v-card-text>
@@ -125,22 +75,10 @@
               </div>
             </v-card-text>
             <v-row>
-              <v-col
-                ><v-btn
-                  class="ma-4"
-                  style="background-color: #cb1c22; color: white"
-                >
-                  <strong>Mua ngay</strong></v-btn
-                ></v-col
-              >
-              <v-col
-                ><v-btn
-                  class="ma-4"
-                  style="background-color: #99a2aa; color: white"
-                >
-                  <strong>So sánh</strong></v-btn
-                ></v-col
-              >
+              <v-col><v-btn class="ma-4" style="background-color: #cb1c22; color: white">
+                  <strong>Mua ngay</strong></v-btn></v-col>
+              <v-col><v-btn class="ma-4" style="background-color: #99a2aa; color: white">
+                  <strong>So sánh</strong></v-btn></v-col>
             </v-row>
           </v-card>
         </v-col>
@@ -155,9 +93,7 @@
         </v-btn>
 
         <span class="text-caption"></span>
-        <v-btn rounded @click="rightButton"
-          ><v-icon color="grey">fas fa-long-arrow-alt-right</v-icon></v-btn
-        >
+        <v-btn rounded @click="rightButton"><v-icon color="grey">fas fa-long-arrow-alt-right</v-icon></v-btn>
         <v-spacer></v-spacer>
       </v-toolbar>
     </v-container>
@@ -209,11 +145,29 @@ export default defineComponent({
     },
     async handleCardClick(title) {
       if (title == "FPT SHOP") {
-        const response = await fetch("http://localhost:3000/laptops/fpt");
+        const response = await fetch("http://localhost:3000/laptops/filter?source=fptshop");
         this.laptops = await response.json();
-      } else {
-        const response = await fetch("http://localhost:3000/laptops");
+
+      }
+      if (title == "Thế Giới Di Động") {
+        const response = await fetch("http://localhost:3000/laptops/filter?source=tgdd");
         this.laptops = await response.json();
+
+      }
+      if (title == "Phong Vũ") {
+        const response = await fetch("http://localhost:3000/laptops/filter?source=phongvu");
+        this.laptops = await response.json();
+
+      }
+      if (title == "HACOM") {
+        const response = await fetch("http://localhost:3000/laptops/filter?source=hanoicomputer");
+        this.laptops = await response.json();
+
+      }
+      if (title == "Phúc Anh") {
+        const response = await fetch("http://localhost:3000/laptops/filter?source=phucanh");
+        this.laptops = await response.json();
+
       }
     },
     handleDataPopup(laptop) {
