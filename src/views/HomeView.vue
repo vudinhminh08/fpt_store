@@ -1,27 +1,67 @@
 <template>
   <v-app>
     <NavBar />
-    <PopupView :laptops="dataPopup" v-if="isShowPopup" @Close="isShowPopup = false" />
+    <PopupView
+      :laptops="dataPopup"
+      v-if="isShowPopup"
+      @Close="isShowPopup = false"
+    />
     <v-container fluid>
-      <v-card color="#F7F7F7" height="180px" tile flat class="d-flex align-center justify-center mt-12" dark>
+      <v-card
+        color="#F7F7F7"
+        height="180px"
+        tile
+        flat
+        class="d-flex align-center justify-center mt-12"
+        dark
+      >
         <v-col cols="12" sm="12">
           <v-item-group mandatory class="mt-n1">
             <v-container>
               <v-row justify="center" class="space">
-                <v-col cols="12" xs="12" md="2" ms="2" v-for="(category, i) in categories" :key="i">
+                <v-col
+                  cols="12"
+                  xs="12"
+                  md="2"
+                  ms="2"
+                  v-for="(category, i) in categories"
+                  :key="i"
+                >
                   <v-item v-slot="{ active }">
-                    <v-card :color="active ? '#D5F0DB' : 'white'" :class="active ? 'borderme' : 'borderout'"
-                      class="d-flex-algin-center rounded-lg mx-2 pa-5" dark height="170"
-                      @click="() => handleCardClick(category.title)" flat>
+                    <v-card
+                      :color="active ? '#D5F0DB' : 'white'"
+                      :class="active ? 'borderme' : 'borderout'"
+                      class="d-flex-algin-center rounded-lg mx-2 pa-5"
+                      dark
+                      height="170"
+                      @click="() => handleCardClick(category.title)"
+                      flat
+                    >
                       <v-row>
                         <v-col cols="12" sm="12">
-                          <v-list-item three-line class="text-center align-center justify-center pa-0">
+                          <v-list-item
+                            three-line
+                            class="text-center align-center justify-center pa-0"
+                          >
                             <v-list-item-content>
-                              <div align="center" justify="center" class="mt-5" style="height: 70px">
-                                <v-img :src="category.img" max-height="80" max-width="80" contain>
+                              <div
+                                align="center"
+                                justify="center"
+                                class="mt-5"
+                                style="height: 70px"
+                              >
+                                <v-img
+                                  :src="category.img"
+                                  max-height="80"
+                                  max-width="80"
+                                  contain
+                                >
                                 </v-img>
                               </div>
-                              <v-list-item-subtitle :class="active ? 'green--text' : 'black--text'" class="caption mt-5">
+                              <v-list-item-subtitle
+                                :class="active ? 'green--text' : 'black--text'"
+                                class="caption mt-5"
+                              >
                                 {{ category.title }}
                               </v-list-item-subtitle>
                             </v-list-item-content>
@@ -47,8 +87,15 @@
         <v-btn varient="text" color="grey">Price</v-btn>
       </v-toolbar>
       <v-row class="ma-5">
-        <v-col @click="handleDataPopup(laptop)" cols="12" sm="3" align="center" justify="center"
-          v-for="(laptop, i) in laptops" :key="i">
+        <v-col
+          @click="handleDataPopup(laptop)"
+          cols="12"
+          sm="3"
+          align="center"
+          justify="center"
+          v-for="(laptop, i) in laptops"
+          :key="i"
+        >
           <v-card align="center" tile>
             <v-img :src="laptop.ImageLink" width="200" height="200" contain>
             </v-img>
@@ -56,35 +103,62 @@
               <strong>{{ laptop.Name }}</strong>
             </v-card-text>
             <v-card-text class="">
-              <button class="pa-2 rounded" style="background-color: #cb1c22; color: white">
+              <button
+                class="pa-2 rounded"
+                style="background-color: #cb1c22; color: white"
+              >
                 <strong>{{ laptop.Price }}</strong>
               </button>
             </v-card-text>
             <v-card-text class="ma-2" style="background-color: #f8f9fa">
               <div class="ml-2">
-                <v-row style="color: #6c757d">{{ "Brand: " + laptop.Brand }}</v-row>
+                <v-row style="color: #6c757d">{{
+                  "Brand: " + laptop.Brand
+                }}</v-row>
                 <v-row style="color: #6c757d">{{ "CPU: " + laptop.CPU }}</v-row>
-                <v-row style="color: #6c757d">{{ "Storage: " + laptop.Storage }}</v-row>
-                <v-row style="color: #6c757d">{{ "Weight: " + laptop.Weight }}</v-row>
+                <v-row style="color: #6c757d">{{
+                  "Storage: " + laptop.Storage
+                }}</v-row>
+                <v-row style="color: #6c757d">{{
+                  "Weight: " + laptop.Weight
+                }}</v-row>
               </div>
             </v-card-text>
             <v-row>
-              <v-col><v-btn class="ma-4" style="background-color: #cb1c22; color: white">
-                  <strong>Mua ngay</strong></v-btn></v-col>
-              <v-col><v-btn class="ma-4" style="background-color: #99a2aa; color: white">
-                  <strong>So sánh</strong></v-btn></v-col>
+              <v-col
+                ><v-btn
+                  class="ma-4"
+                  style="background-color: #cb1c22; color: white"
+                >
+                  <strong>Mua ngay</strong></v-btn
+                ></v-col
+              >
+              <v-col
+                ><v-btn
+                  class="ma-4"
+                  style="background-color: #99a2aa; color: white"
+                >
+                  <strong>So sánh</strong></v-btn
+                ></v-col
+              >
             </v-row>
           </v-card>
         </v-col>
       </v-row>
       <v-divider></v-divider>
       <v-toolbar color="transparent">
-        <v-toolbar-title class="text-caption">
-          Show more laptop</v-toolbar-title>
+        <!-- <v-toolbar-title class="text-caption">
+          Show more laptop</v-toolbar-title> -->
         <v-spacer></v-spacer>
-        <v-icon color="grey" left class="mr-4 mt-n1">fas fa-long-arrow-alt-left</v-icon>
+        <v-btn rounded @click="leftButton">
+          <v-icon color="grey">fas fa-long-arrow-alt-left</v-icon>
+        </v-btn>
+
         <span class="text-caption"></span>
-        <v-icon color="grey" left class="mr-4 mt-n1">fas fa-long-arrow-alt-right</v-icon>
+        <v-btn rounded @click="rightButton"
+          ><v-icon color="grey">fas fa-long-arrow-alt-right</v-icon></v-btn
+        >
+        <v-spacer></v-spacer>
       </v-toolbar>
     </v-container>
     <FooterView />
@@ -121,6 +195,7 @@ export default defineComponent({
       dataPopup: [],
       isShowPopup: false,
       data: [],
+      pageNumber: 1,
     };
   },
   mounted() {
@@ -128,24 +203,44 @@ export default defineComponent({
   },
   methods: {
     async fetchData() {
-      const response = await fetch("http://localhost:3000/laptops?page=1");
+      let fullUrl = `http://localhost:3000/laptops?page=${this.pageNumber}`;
+      const response = await fetch(fullUrl);
       this.laptops = await response.json();
     },
     async handleCardClick(title) {
       if (title == "FPT SHOP") {
         const response = await fetch("http://localhost:3000/laptops/fpt");
         this.laptops = await response.json();
-
-      }
-      else {
+      } else {
         const response = await fetch("http://localhost:3000/laptops");
         this.laptops = await response.json();
       }
     },
     handleDataPopup(laptop) {
-      this.dataPopup = laptop.matching
-      this.isShowPopup = true
-    }
+      this.dataPopup = laptop.matching;
+      this.isShowPopup = true;
+    },
+    leftButton() {
+      if (this.pageNumber > 1) {
+        this.pageNumber--;
+      } else {
+        this.pageNumber = 1;
+      }
+      this.fetchData();
+    },
+    rightButton() {
+      this.pageNumber++;
+      this.fetchData();
+    },
+  },
+  watch: {
+    pageNumber: {
+      handler: function (newValue) {
+        if (newValue) {
+          this.$router.push({ name: "home", params: { id: newValue } });
+        }
+      },
+    },
   },
 });
 </script>
