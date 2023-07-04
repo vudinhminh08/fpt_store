@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <NavBar />
+    <PopupView :laptops="dataPopup" v-if="isShowPopup" @Close="isShowPopup = false" />
     <v-container fluid>
       <v-card color="#F7F7F7" height="180px" tile flat class="d-flex align-center justify-center mt-12" dark>
         <v-col cols="12" sm="12">
@@ -46,7 +47,8 @@
         <v-btn varient="text" color="grey">Price</v-btn>
       </v-toolbar>
       <v-row class="ma-5">
-        <v-col cols="12" sm="3" align="center" justify="center" v-for="(laptop, i) in laptops" :key="i">
+        <v-col @click="handleDataPopup(laptop)" cols="12" sm="3" align="center" justify="center"
+          v-for="(laptop, i) in laptops" :key="i">
           <v-card align="center" tile>
             <v-img :src="laptop.ImageLink" width="200" height="200" contain>
             </v-img>
@@ -63,7 +65,7 @@
                 <v-row style="color: #6c757d">{{ "Brand: " + laptop.Brand }}</v-row>
                 <v-row style="color: #6c757d">{{ "CPU: " + laptop.CPU }}</v-row>
                 <v-row style="color: #6c757d">{{ "Storage: " + laptop.Storage }}</v-row>
-                <v-row style="color: #6c757d">{{ "OS: " + laptop.OS }}</v-row>
+                <v-row style="color: #6c757d">{{ "Weight: " + laptop.Weight }}</v-row>
               </div>
             </v-card-text>
             <v-row>
@@ -94,12 +96,14 @@ import { defineComponent } from "vue";
 
 import NavBar from "@/components/NavBar.vue";
 import FooterView from "@/components/FooterView.vue";
+import PopupView from "@/components/PopupView.vue";
 // import axios from "axios";
 export default defineComponent({
   name: "HomeView",
   components: {
     NavBar,
     FooterView,
+    PopupView,
   },
   data() {
     return {
@@ -111,8 +115,11 @@ export default defineComponent({
         { img: "tgdd.png", title: "Thế Giới Di Động" },
         { img: "phongvu.png", title: "Phong Vũ" },
         { img: "hacom.png", title: "HACOM" },
+        { img: "phucanh.png", title: "Phúc Anh" },
       ],
       laptops: [],
+      dataPopup: [],
+      isShowPopup: false,
       data: [],
     };
   },
@@ -121,7 +128,7 @@ export default defineComponent({
   },
   methods: {
     async fetchData() {
-      const response = await fetch("http://localhost:3000/laptops");
+      const response = await fetch("http://localhost:3000/laptops?page=1");
       this.laptops = await response.json();
     },
     async handleCardClick(title) {
@@ -135,6 +142,10 @@ export default defineComponent({
         this.laptops = await response.json();
       }
     },
+    handleDataPopup(laptop) {
+      this.dataPopup = laptop.matching
+      this.isShowPopup = true
+    }
   },
 });
 </script>
