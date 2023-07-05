@@ -1,59 +1,26 @@
 <template>
   <v-app>
     <NavBar />
-    <PopupView
-      :laptops="dataPopup"
-      v-if="isShowPopup"
-      @Close="isShowPopup = false"
-    />
+    <PopupView :laptops="dataPopup" v-if="isShowPopup" @Close="isShowPopup = false" />
     <v-container fluid>
-      <v-card
-        color="#F7F7F7"
-        height="180px"
-        tile
-        flat
-        class="d-flex align-center justify-center mt-12"
-        dark
-      >
+      <v-card color="#F7F7F7" height="180px" tile flat class="d-flex align-center justify-center mt-12" dark>
         <v-col cols="12" sm="12">
           <v-item-group mandatory class="mt-n1">
             <v-container>
               <v-row justify="center" class="space">
                 <v-col cols="12" xs="12" md="2" ms="2">
                   <v-item v-slot="{ active }">
-                    <v-card
-                      :color="active ? '#D5F0DB' : 'white'"
-                      :class="active ? 'borderme' : 'borderout'"
-                      class="d-flex-algin-center rounded-lg mx-2 pa-5"
-                      dark
-                      height="170"
-                      @click="() => handleCardClick('FPT SHOP')"
-                      flat
-                    >
+                    <v-card :color="active ? '#D5F0DB' : 'white'" :class="active ? 'borderme' : 'borderout'"
+                      class="d-flex-algin-center rounded-lg mx-2 pa-5" dark height="170"
+                      @click="() => handleCardClick('FPT SHOP')" flat>
                       <v-row>
                         <v-col cols="12" sm="12">
-                          <v-list-item
-                            three-line
-                            class="text-center align-center justify-center pa-0"
-                          >
+                          <v-list-item three-line class="text-center align-center justify-center pa-0">
                             <v-list-item-content>
-                              <div
-                                align="center"
-                                justify="center"
-                                class="mt-5"
-                                style="height: 70px"
-                              >
-                                <v-img
-                                  src="../../public/fpt1.png"
-                                  max-height="80"
-                                  max-width="80"
-                                  contain
-                                />
+                              <div align="center" justify="center" class="mt-5" style="height: 70px">
+                                <v-img src="../../public/fpt1.png" max-height="80" max-width="80" contain />
                               </div>
-                              <v-list-item-subtitle
-                                :class="active ? 'green--text' : 'black--text'"
-                                class="caption mt-5"
-                              >
+                              <v-list-item-subtitle :class="active ? 'green--text' : 'black--text'" class="caption mt-5">
                                 FPT SHOP
                               </v-list-item-subtitle>
                             </v-list-item-content>
@@ -65,39 +32,17 @@
                 </v-col>
                 <v-col cols="12" xs="12" md="2" ms="2">
                   <v-item v-slot="{ active }">
-                    <v-card
-                      :color="active ? '#D5F0DB' : 'white'"
-                      :class="active ? 'borderme' : 'borderout'"
-                      class="d-flex-algin-center rounded-lg mx-2 pa-5"
-                      dark
-                      height="170"
-                      @click="() => handleCardClick('Thế Giới Di Động')"
-                      flat
-                    >
+                    <v-card :color="active ? '#D5F0DB' : 'white'" :class="active ? 'borderme' : 'borderout'"
+                      class="d-flex-algin-center rounded-lg mx-2 pa-5" dark height="170"
+                      @click="() => handleCardClick('Thế Giới Di Động')" flat>
                       <v-row>
                         <v-col cols="12" sm="12">
-                          <v-list-item
-                            three-line
-                            class="text-center align-center justify-center pa-0"
-                          >
+                          <v-list-item three-line class="text-center align-center justify-center pa-0">
                             <v-list-item-content>
-                              <div
-                                align="center"
-                                justify="center"
-                                class="mt-5"
-                                style="height: 70px"
-                              >
-                                <v-img
-                                  src="../../public/tgdd.png"
-                                  max-height="80"
-                                  max-width="80"
-                                  contain
-                                />
+                              <div align="center" justify="center" class="mt-5" style="height: 70px">
+                                <v-img src="../../public/tgdd.png" max-height="80" max-width="80" contain />
                               </div>
-                              <v-list-item-subtitle
-                                :class="active ? 'green--text' : 'black--text'"
-                                class="caption mt-5"
-                              >
+                              <v-list-item-subtitle :class="active ? 'green--text' : 'black--text'" class="caption mt-5">
                                 Thế Giới Di Động
                               </v-list-item-subtitle>
                             </v-list-item-content>
@@ -109,39 +54,17 @@
                 </v-col>
                 <v-col cols="12" xs="12" md="2" ms="2">
                   <v-item v-slot="{ active }">
-                    <v-card
-                      :color="active ? '#D5F0DB' : 'white'"
-                      :class="active ? 'borderme' : 'borderout'"
-                      class="d-flex-algin-center rounded-lg mx-2 pa-5"
-                      dark
-                      height="170"
-                      @click="() => handleCardClick('Phong Vũ')"
-                      flat
-                    >
+                    <v-card :color="active ? '#D5F0DB' : 'white'" :class="active ? 'borderme' : 'borderout'"
+                      class="d-flex-algin-center rounded-lg mx-2 pa-5" dark height="170"
+                      @click="() => handleCardClick('Phong Vũ')" flat>
                       <v-row>
                         <v-col cols="12" sm="12">
-                          <v-list-item
-                            three-line
-                            class="text-center align-center justify-center pa-0"
-                          >
+                          <v-list-item three-line class="text-center align-center justify-center pa-0">
                             <v-list-item-content>
-                              <div
-                                align="center"
-                                justify="center"
-                                class="mt-5"
-                                style="height: 70px"
-                              >
-                                <v-img
-                                  src="../../public/phongvu.png"
-                                  max-height="80"
-                                  max-width="80"
-                                  contain
-                                />
+                              <div align="center" justify="center" class="mt-5" style="height: 70px">
+                                <v-img src="../../public/phongvu.png" max-height="80" max-width="80" contain />
                               </div>
-                              <v-list-item-subtitle
-                                :class="active ? 'green--text' : 'black--text'"
-                                class="caption mt-5"
-                              >
+                              <v-list-item-subtitle :class="active ? 'green--text' : 'black--text'" class="caption mt-5">
                                 Phong Vũ
                               </v-list-item-subtitle>
                             </v-list-item-content>
@@ -153,39 +76,17 @@
                 </v-col>
                 <v-col cols="12" xs="12" md="2" ms="2">
                   <v-item v-slot="{ active }">
-                    <v-card
-                      :color="active ? '#D5F0DB' : 'white'"
-                      :class="active ? 'borderme' : 'borderout'"
-                      class="d-flex-algin-center rounded-lg mx-2 pa-5"
-                      dark
-                      height="170"
-                      @click="() => handleCardClick('HACOM')"
-                      flat
-                    >
+                    <v-card :color="active ? '#D5F0DB' : 'white'" :class="active ? 'borderme' : 'borderout'"
+                      class="d-flex-algin-center rounded-lg mx-2 pa-5" dark height="170"
+                      @click="() => handleCardClick('HACOM')" flat>
                       <v-row>
                         <v-col cols="12" sm="12">
-                          <v-list-item
-                            three-line
-                            class="text-center align-center justify-center pa-0"
-                          >
+                          <v-list-item three-line class="text-center align-center justify-center pa-0">
                             <v-list-item-content>
-                              <div
-                                align="center"
-                                justify="center"
-                                class="mt-5"
-                                style="height: 70px"
-                              >
-                                <v-img
-                                  src="../../public/hacom.png"
-                                  max-height="80"
-                                  max-width="80"
-                                  contain
-                                />
+                              <div align="center" justify="center" class="mt-5" style="height: 70px">
+                                <v-img src="../../public/hacom.png" max-height="80" max-width="80" contain />
                               </div>
-                              <v-list-item-subtitle
-                                :class="active ? 'green--text' : 'black--text'"
-                                class="caption mt-5"
-                              >
+                              <v-list-item-subtitle :class="active ? 'green--text' : 'black--text'" class="caption mt-5">
                                 HACOM
                               </v-list-item-subtitle>
                             </v-list-item-content>
@@ -197,39 +98,17 @@
                 </v-col>
                 <v-col cols="12" xs="12" md="2" ms="2">
                   <v-item v-slot="{ active }">
-                    <v-card
-                      :color="active ? '#D5F0DB' : 'white'"
-                      :class="active ? 'borderme' : 'borderout'"
-                      class="d-flex-algin-center rounded-lg mx-2 pa-5"
-                      dark
-                      height="170"
-                      @click="() => handleCardClick('Phúc Anh')"
-                      flat
-                    >
+                    <v-card :color="active ? '#D5F0DB' : 'white'" :class="active ? 'borderme' : 'borderout'"
+                      class="d-flex-algin-center rounded-lg mx-2 pa-5" dark height="170"
+                      @click="() => handleCardClick('Phúc Anh')" flat>
                       <v-row>
                         <v-col cols="12" sm="12">
-                          <v-list-item
-                            three-line
-                            class="text-center align-center justify-center pa-0"
-                          >
+                          <v-list-item three-line class="text-center align-center justify-center pa-0">
                             <v-list-item-content>
-                              <div
-                                align="center"
-                                justify="center"
-                                class="mt-5"
-                                style="height: 70px"
-                              >
-                                <v-img
-                                  src="../../public/phucanh.png"
-                                  max-height="80"
-                                  max-width="80"
-                                  contain
-                                />
+                              <div align="center" justify="center" class="mt-5" style="height: 70px">
+                                <v-img src="../../public/phucanh.png" max-height="80" max-width="80" contain />
                               </div>
-                              <v-list-item-subtitle
-                                :class="active ? 'green--text' : 'black--text'"
-                                class="caption mt-5"
-                              >
+                              <v-list-item-subtitle :class="active ? 'green--text' : 'black--text'" class="caption mt-5">
                                 Phúc Anh
                               </v-list-item-subtitle>
                             </v-list-item-content>
@@ -249,27 +128,11 @@
       <v-toolbar color="transparent">
         <v-toolbar-title>Danh sách Laptop</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-text-field
-          density="compact"
-          variant="outlined"
-          label="Search"
-          append-inner-icon="fas fa-search"
-          single-line
-          hide-details
-          class="mr-2"
-          v-model="searchKeyword"
-        ></v-text-field>
+        <v-text-field density="compact" variant="outlined" label="Search" append-inner-icon="fas fa-search" single-line
+          hide-details class="mr-2" v-model="searchKeyword"></v-text-field>
       </v-toolbar>
       <v-row class="ma-5">
-        <v-col
-          @click="handleDataPopup(laptop)"
-          cols="12"
-          sm="3"
-          align="center"
-          justify="center"
-          v-for="(laptop, i) in laptops"
-          :key="i"
-        >
+        <v-col cols="12" sm="3" align="center" justify="center" v-for="(laptop, i) in  laptops " :key="i">
           <v-card align="center" tile>
             <v-img :src="laptop.ImageLink" width="200" height="200" contain>
             </v-img>
@@ -277,10 +140,7 @@
               <strong>{{ laptop.Name }}</strong>
             </v-card-text>
             <v-card-text class="">
-              <button
-                class="pa-2 rounded"
-                style="background-color: #cb1c22; color: white"
-              >
+              <button class="pa-2 rounded" style="background-color: #cb1c22; color: white">
                 <strong>{{ laptop.Price }}</strong>
               </button>
             </v-card-text>
@@ -299,22 +159,10 @@
               </div>
             </v-card-text>
             <v-row>
-              <v-col
-                ><v-btn
-                  class="ma-4"
-                  style="background-color: #cb1c22; color: white"
-                >
-                  <strong>Mua ngay</strong></v-btn
-                ></v-col
-              >
-              <v-col
-                ><v-btn
-                  class="ma-4"
-                  style="background-color: #99a2aa; color: white"
-                >
-                  <strong>So sánh</strong></v-btn
-                ></v-col
-              >
+              <v-col><v-btn :href="laptop.Link" class="ma-4" style="background-color: #cb1c22; color: white">
+                  <strong>Mua ngay</strong></v-btn></v-col>
+              <v-col><v-btn @click="handleDataPopup(laptop)" class="ma-4" style="background-color: #99a2aa; color: white">
+                  <strong>So sánh</strong></v-btn></v-col>
             </v-row>
           </v-card>
         </v-col>
@@ -329,9 +177,7 @@
         </v-btn>
 
         <span class="text-caption"></span>
-        <v-btn rounded @click="rightButton"
-          ><v-icon color="grey">fas fa-long-arrow-alt-right</v-icon></v-btn
-        >
+        <v-btn rounded @click="rightButton"><v-icon color="grey">fas fa-long-arrow-alt-right</v-icon></v-btn>
         <v-spacer></v-spacer>
       </v-toolbar>
     </v-container>
@@ -453,7 +299,7 @@ export default defineComponent({
         }
       },
     },
-    
+
   },
 });
 </script>
